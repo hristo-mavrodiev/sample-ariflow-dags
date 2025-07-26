@@ -12,7 +12,7 @@ default_args = {
 with DAG(
     dag_id='ibex_scraper',
     default_args=default_args,
-    schedule_interval='@daily',
+    schedule="@daily", 
     start_date=datetime(2025,7,25),
     catchup=False,
 ) as dag:
@@ -31,3 +31,6 @@ with DAG(
         get_logs=True,
         is_delete_operator_pod=True,
     )
+
+if __name__ == "__main__":
+    dag.test()
