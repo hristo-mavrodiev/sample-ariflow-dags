@@ -1,8 +1,7 @@
 
 from airflow import DAG
 from airflow.providers.cncf.kubernetes.operators.pod import KubernetesPodOperator
-from airflow.utils.dates import days_ago
-from datetime import timedelta
+from datetime import datetime, timedelta
 
 default_args = {
     'owner': 'airflow',
@@ -14,7 +13,7 @@ with DAG(
     dag_id='ibex_scraper',
     default_args=default_args,
     schedule_interval='@daily',
-    start_date=days_ago(1),
+    start_date=datetime(2025,7,25),
     catchup=False,
 ) as dag:
 
